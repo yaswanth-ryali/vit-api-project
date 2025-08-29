@@ -3,9 +3,22 @@ const app = express();
 
 app.use(express.json());
 
+const fullName = "yaswanth ryali"; 
+const dob = "28102004"; 
+const emailId = "yaswanthryali07@gmail.com"; 
+const rollNumber = "22BCE20037"; 
+
+app.get('/', (req, res) => {
+    res.status(200).send("API is running successfully.");
+});
+
 app.get('/bfhl', (req, res) => {
     const response = {
-        "operation_code": 1
+        "operation_code": 1,
+        "message": "This endpoint is for a POST request. Please send a POST request with a 'data' array in the JSON body.",
+        "example_request": {
+            "data": ["a", "1", "334", "4", "R", "$"]
+        }
     };
     res.status(200).json(response);
 });
@@ -20,11 +33,6 @@ app.post('/bfhl', (req, res) => {
                 message: "Invalid input: 'data' must be an array."
             });
         }
-
-        const fullName = "yaswanth ryali"; 
-        const dob = "28102004"; 
-        const emailId = "yaswanthryali07@gmail.com"; 
-        const rollNumber = "22BCE20037"; 
 
         const userId = `${fullName.toLowerCase().replace(' ', '_')}_${dob}`;
 
