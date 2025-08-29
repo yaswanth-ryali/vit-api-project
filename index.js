@@ -3,6 +3,13 @@ const app = express();
 
 app.use(express.json());
 
+app.get('/bfhl', (req, res) => {
+    const response = {
+        "operation_code": 1
+    };
+    res.status(200).json(response);
+});
+
 app.post('/bfhl', (req, res) => {
     try {
         const data = req.body.data;
